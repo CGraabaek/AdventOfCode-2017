@@ -20,4 +20,4 @@ print("Part 1: " + str(part1(input,0)))
 
 offset=int(len(input) / 2)
 
-print("Part 2: " + str(part2(input,0,offset)))
+print "Part 2: " + str(part2(input,0,offset))

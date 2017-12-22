@@ -1,11 +1,26 @@
-print("Advent Of Code - Day 2")
+print "Advent Of Code - Day 2"
 
-input = open('data_day2.txt', 'r').read()
+PUZZLEINPUT = open('data_day2.txt', 'r').read()
 
-checksum = 0
+CHECKSUM = 0
 
-for line in input.split("\n"):
+for line in PUZZLEINPUT.split("\n"):
     row = list(map(int, line.split("\t")))
-    checksum += max(row) - min(row)
+    CHECKSUM += max(row) - min(row)
 
-print("Part 1, Checksum: " + str(checksum))
+print "Part 1, Checksum: " + str(CHECKSUM)
+
+
+s = 0
+
+for line in PUZZLEINPUT.split("\n"):
+    row = list( map(int, line.split("\t")) )
+    
+    i = 0
+    for i, a in enumerate(row):
+        j = 0
+        for j,b in enumerate(row):
+            if i!=j and a%b==0:
+                s += a/b
+
+print "Part 2, Sum of the divided numbers " + str(s)
