@@ -4,23 +4,7 @@ print "Advent Of Code - Day 8"
 
 PUZZLEINPUT = [x.split(" ") for x in open('input.txt', 'r').read().split("\n")]
 
-
-def getCondition(c):
-    if c == ">":
-        return operator.gt
-    if c == "<":
-        return operator.lt
-    if c == ">=":
-        return operator.ge
-    if c == "<=":
-        return operator.le
-    if c == "==":
-        return operator.eq
-    if c == "!=":
-        return operator.ne
-
-
-def testGetCondition(register1, condition, register2):
+def evaluateCondition(register1, condition, register2):
     if condition == ">":
         return REGS[register1] > int(register2)
     if condition == "<":
@@ -49,7 +33,7 @@ for x in PUZZLEINPUT:
         REGS[x[0]] = 0
 
     # Check the condition
-    if testGetCondition(x[4], x[5], x[6]):
+    if evaluateCondition(x[4], x[5], x[6]):
         if x[1] == 'inc':
             REGS[x[0]] += int(x[2])
         if x[1] == 'dec':
