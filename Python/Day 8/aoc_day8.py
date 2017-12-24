@@ -1,55 +1,61 @@
-from collections import defaultdict
 import operator
 
 print "Advent Of Code - Day 8"
 
 PUZZLEINPUT = [x.split(" ") for x in open('input.txt', 'r').read().split("\n")]
 
+
 def getCondition(c):
-    if c==">":
+    if c == ">":
         return operator.gt
-    if c=="<":
+    if c == "<":
         return operator.lt
-    if c==">=":
+    if c == ">=":
         return operator.ge
-    if c=="<=":
+    if c == "<=":
         return operator.le
-    if c=="==":
+    if c == "==":
         return operator.eq
-    if c=="!=":
+    if c == "!=":
         return operator.ne
 
-def testGetCondition(register1,condition,register2):
-    if condition==">":
-        return register1>register2
-    if condition=="<":
-        return register1<register2
-    if condition==">=":
-        return register1>=register2
-    if condition=="<=":
-        return register1<=register2
-    if condition=="==":
-        return register1==register2
-    if condition=="!=":
-        return register1!=register2
 
-#regs = defaultdict(int)
-regs = {}
+def testGetCondition(register1, condition, register2):
+    if condition == ">":
+        return REGS[register1] > int(register2)
+    if condition == "<":
+        return REGS[register1] < int(register2)
+    if condition == ">=":
+        return REGS[register1] >= int(register2)
+    if condition == "<=":
+        return REGS[register1] <= int(register2)
+    if condition == "==":
+        return REGS[register1] == int(register2)
+    if condition == "!=":
+        return REGS[register1] != int(register2)
+
+
+# Create key/value pair (dictionary)
+REGS = {}
+MAX_VALUES = []
 
 for x in PUZZLEINPUT:
-   # print testGetCondition(x[4],x[5],x[6])
-    #Check if first register exists
-    if x[0] not in regs:
-        regs[x[0]] = 0
-    #Check if second register exists
-    if x[4] not in regs:
-        regs[x[4]] = 0
+    # Check if first register exists
+    if x[4] not in REGS:
+        REGS[x[4]] = 0
+       
+    # Check if second register exists
+    if x[0] not in REGS:
+        REGS[x[0]] = 0
 
-    #Check the condition
-    if testGetCondition(x[4],x[5],x[6]):
+    # Check the condition
+    if testGetCondition(x[4], x[5], x[6]):
         if x[1] == 'inc':
-            regs[x[0]] += int(x[2])
+            REGS[x[0]] += int(x[2])
         if x[1] == 'dec':
-            regs[x[0]] -= int(x[2])
+            REGS[x[0]] -= int(x[2])
+        MAX_VALUES.append(REGS[x[0]])
 
-print "Part 1, " + str(max(regs.values()))
+# Take highest value of the key/value pair.
+print "Part 1, " + str(max(REGS.values()))
+print "Part 2,  " + str(max(MAX_VALUES))

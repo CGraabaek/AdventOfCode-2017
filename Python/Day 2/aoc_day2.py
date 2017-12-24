@@ -10,12 +10,11 @@ for line in PUZZLEINPUT.split("\n"):
 
 print "Part 1, Checksum: " + str(CHECKSUM)
 
-
 s = 0
 
 for line in PUZZLEINPUT.split("\n"):
-    row = list( map(int, line.split("\t")) )
-    
+    row = list(map(int, line.split("\t")) )
+
     i = 0
     for i, a in enumerate(row):
         j = 0
