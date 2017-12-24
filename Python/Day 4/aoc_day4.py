@@ -12,7 +12,7 @@ for words in PUZZLEINPUT:
         P1 += 1
     #Create array with all the words, where each word has been sorted
     words = [''.join(sorted(x)) for x in words]
-    # If the length of the set is equal to the words, a set only has unique values, then it's a valid pharse.
+    # i
     if len(words) == len(set(words)):
         P2 += 1
 
