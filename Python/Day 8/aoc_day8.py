@@ -51,5 +51,5 @@ for x in PUZZLEINPUT:
             regs[x[0]] += int(x[2])
         if x[1] == 'dec':
             regs[x[0]] -= int(x[2])
-    
+
 print "Part 1, " + str(max(regs.values()))
